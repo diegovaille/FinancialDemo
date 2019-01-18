@@ -14,8 +14,8 @@ namespace FinancialDemo.Infrastructure.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<TransferTransaction>();
-            builder.Entity<WithdrawalTransaction>();
+            builder.Entity<DebitTransaction>();
+            builder.Entity<CreditTransaction>();
 
             builder.Entity<Account>().HasMany(s => s.Transactions);
 

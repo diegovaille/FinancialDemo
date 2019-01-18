@@ -10,7 +10,9 @@ namespace FinancialDemo.Core.Entities
 
         public decimal Amount { get; set; }
 
-        public TransactionTypes Type { get; set; }
+        public string Operation => this.GetType().Name;
+
+        public TransactionType Type { get; set; }
 
         public static string GetEnumDescription(Enum value)
         {
@@ -29,7 +31,7 @@ namespace FinancialDemo.Core.Entities
         }
     }
 
-    public enum TransactionTypes
+    public enum TransactionType
     {
         Transfer = 1,
         Withdrawal = 2,

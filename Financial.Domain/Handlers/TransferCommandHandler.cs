@@ -34,17 +34,27 @@ namespace FinancialDemo.Web.Application.DomainEventHandlers
 
             using (var scope = new TransactionScope())
             {
-                TransferTransaction transferTransaction = new TransferTransaction { AccountId = sourceAccount.Id, DestinationAccountId = destinationAccount.Id, Amount = request.Amount };
-
-                sourceAccount.Balance -= request.Amount;
-                destinationAccount.Balance += request.Amount;
-                sourceAccount.AddTransaction(transferTransaction);
-
-                await _accountRepository.Update(sourceAccount);
-                await _accountRepository.Update(destinationAccount);
+                await CreateDebitTransfer(request, sourceAccount, destinationAccount);
+                await CreateCreditTransfer(request, sourceAccount, destinationAccount);
             }
 
             return new Response("Transferencia concluida com sucesso");
+        }
+
+        private async Task CreateCreditTransfer(TransferCommand request, Account sourceAccount, Account destinationAccount)
+        {
+            CreditTransaction creditTransaction = new CreditTransaction(TransactionType.Transfer) { AccountId = destinationAccount.Id, OriginAccountId = sourceAccount.Id, Amount = request.Amount };
+            destinationAccount.Balance += request.Amount;
+            destinationAccount.AddTransaction(creditTransaction);
+            await _accountRepository.Update(destinationAccount);
+        }
+
+        private async Task CreateDebitTransfer(TransferCommand request, Account sourceAccount, Account destinationAccount)
+        {
+            DebitTransaction debitTransaction = new DebitTransaction(TransactionType.Transfer) { AccountId = sourceAccount.Id, DestinationAccountId = destinationAccount.Id, Amount = request.Amount };
+            sourceAccount.Balance -= request.Amount;
+            sourceAccount.AddTransaction(debitTransaction);
+            await _accountRepository.Update(sourceAccount);
         }
     }
 }
