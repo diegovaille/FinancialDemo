@@ -3,3 +3,11 @@
 ################################################################################
 
 /Financial.Domain/obj
+/Financial.Domain/bin/Debug/netstandard2.0
+/.vs
+/Financial.Infrastructure/bin/Debug/netstandard2.0
+/Financial.Infrastructure/obj
+/FinancialDemo.Tests/bin/Debug/netcoreapp2.1
+/FinancialDemo.Tests/obj
+/FinancialProjectDemo/bin/Debug/netcoreapp2.1
+/FinancialProjectDemo/obj

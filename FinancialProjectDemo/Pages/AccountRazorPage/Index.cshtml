@@ -1,0 +1,10 @@
+﻿@page
+@model FinancialDemo.Web.Pages.AccountRazorPage.IndexModel
+
+<h2>Accounts (Razor Page)</h2>
+<ul>
+    @foreach (var item in Model.Accounts)
+    {
+    <li>@item.Id<br />@item.Name<br />@item.Balance</li>
+    }
+</ul>

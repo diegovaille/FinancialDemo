@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Financial Demo";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Accounts (MVC)</h2>
+        <ul>
+            <li><a asp-area="" asp-controller="Accounts" asp-action="Populate">Load Sample Accounts</a> (API call returning just a number)</li>
+            <li><a asp-area="" asp-controller="Accounts" asp-action="Index">List Accounts</a></li>
+            <li><a href="/swagger">API Documentation (Swagger)</a></li>
+        </ul>
+        <h2>Accounts (Razor Pages)</h2>
+        <ul>
+            <li><a asp-page="/AccountRazorPage/Populate">Load Sample Accounts</a></li>
+            <li><a asp-page="/AccountRazorPage/Index">List Accounts</a></li>
+            <li><a asp-page="/AccountRazorPage/Transfer">Transfer Accounts</a></li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h2>About the Author</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/diego-vaille/">Linkedin - Diego Simas Vaille</a></li>
+            <li><a href="https://github.com/diegovaille">GitHub</a></li>
+        </ul>
+    </div>
+</div>

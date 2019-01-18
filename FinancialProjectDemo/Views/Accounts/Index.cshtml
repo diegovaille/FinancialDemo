@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Account List";
+}
+@model IEnumerable<FinancialDemo.Core.Entities.Account>
+<h2>Accounts (MVC View)</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+    <li>@item.Id<br />@item.Name<br />@item.Balance</li>
+    }
+</ul>
